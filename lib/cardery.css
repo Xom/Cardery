@@ -1,0 +1,77 @@
+#editDiv {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.textContainer, .textEditor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  overflow: visible;
+}
+
+#dataDiv {
+  display: none;
+}
+
+#jsDiv {
+  left: 2%;
+  right: 50%;
+}
+
+#cssDiv {
+  left: 52%;
+}
+
+#csvDiv {
+  left: 2%;
+}
+
+.lineNumbers, .textEditor textarea {
+  position: absolute;
+  font-family: monospace;
+  font-size: 10px;
+  white-space: pre;
+}
+
+.lineNumbers {
+  bottom: 7px;
+  right: 99.5%;
+  top: 7px;
+  width: 100px;
+  overflow: hidden;
+  text-align: right;
+}
+
+#jsLines, #cssLines {
+  right: 99%;
+}
+
+.textEditor textarea {
+  left: 1%;
+  top: 5px;
+  width: 98%;
+  height: 185px;
+  resize: none;
+}
+
+#jsText, #cssText {
+  left: 2%;
+  width: 96%;
+}
+
+#ctrlDiv {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+
+#tabsDiv {
+  position: absolute;
+  right: 1%;
+}
