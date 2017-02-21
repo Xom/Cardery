@@ -1,2 +1,63 @@
-coming soon
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Cardery – Make cards with HTML, CSS, JS, CSV</title>
+    <style>
+      #screenshot { float: right;
+                    width: 60%;
+                   margin: 0 0.2in;
+                   border: medium solid #00f; }
+
+      .ctr { text-align: center; }
+
+      hr { margin: 0.3in; }
+
+      .pad { padding: 0 0.2in; }
+
+      .red { color: #c00; }
+
+      code { color: #060; }
+
+      #arrow { text-decoration: none;
+                     font-size: xx-large; }
+    </style>
+  </head>
+  <body>
+    <a href="cardery.html"><img id="screenshot" src="lib/cardery.png"></a>
+    <h1 class="ctr">Cardery</h1>
+    <p class="ctr">Make cards with HTML, CSS, JS, and CSV.</p>
+    <p class="ctr">by <a href="https://twitter.com/deCardery">Michael de Cardery</a>, a.k.a. "Xom"</p>
+    <p class="ctr"><a href="https://github.com/Xomnom/Cardery">GitHub repo</a> · <a href="https://github.com/Xomnom/Cardery/releases">Download</a> · <a href="LICENSE">License (MIT)</a></p>
+    <p class="ctr">Click screenshot to start. <a id="arrow" href="cardery.html">↗</a></p>
+    <hr>
+    <p class="ctr"><b>README</b></p>
+    <p class="pad">Input card data in <a href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV format</a> (use column names in first line). Input JavaScript and CSS code to convert card data to HTML. (Use the radio buttons on the right to switch between data and code inputs.)</p>
+    <p class="pad">Use local image files to avoid loading images across a network connection. Cardery is designed to be used offline.<br>
+      <span class="red"><b>NOTE:</b> Local image files do not work in Firefox, as far as I know. I tried Firefox and Chrome, and it only works for me in Chrome. For details, see <code>CCC.images</code> further on this page.</span></p>
+    <p class="pad">"Generate Test" generates a sample of up to six cards. "Generate All" generates all cards; although still only six are previewed, the resulting "Create ZIP" button will include all of the cards. For convenience, test samples always include the last card in the CSV.</p>
+    <p class="pad">For convenience, Cardery includes the following JavaScript libraries:
+      <ul><li><a href="https://api.jquery.com/">jQuery</a>, for manipulating HTML.</li>
+      <li><a href="https://lodash.com/docs">Lodash</a>, miscellaneous utility functions.</li>
+      <li><a href="http://handlebarsjs.com/">Handlebars.js</a> and <a href="https://elving.github.io/swag/">Swag</a>, string templating. (You don't have to call <code>Swag.registerHelpers</code> because Cardery already does so.)</li></ul></p>
+    <p class="pad">Don't edit cardery.html directly. Instead, put your data and code in .csv, .js, and .css files in a folder, and mostly edit them in a text editor, such as <a href="https://notepad-plus-plus.org/">Notepad++</a>. When you do minor edits inside Cardery, don't forget to keep copying your changes out to your files. To save all the versions of your files, use <a href="https://betterexplained.com/articles/a-visual-guide-to-version-control/">version control software</a>, such as <a href="https://git-scm.com/downloads">git</a> (<a href="https://try.github.io/">tutorial</a>).</p>
+    <hr>
+    <p class="pad">Cardery's functions are described below.</p>
+    <p class="pad"><code>CCC.setMain(main)</code><br>&nbsp;&nbsp;
+      Cardery expects you to give it a function <code>main(x, cdata)</code> that returns a jQuery object for it to render.<br>&nbsp;&nbsp;
+      <code>x</code> is the card's index; it starts at 0 for the first card, so it's always 2 less than the card's line number in the CSV.<br>&nbsp;&nbsp;
+      <code>cdata</code> is an object containing the card data, with the column names as keys. Cardery uses <a href="http://papaparse.com/docs#results">Papa Parse</a> to parse the CSV; the full Papa Parse result object is available as <code>CCC.parsed</code>.</p>
+    <p class="pad"><code>CCC.setRenderOptions(options)</code><br>&nbsp;&nbsp;
+      Cardery uses <a href="https://github.com/tsayen/dom-to-image">dom-to-image</a> to render to PNG.<br>&nbsp;&nbsp;
+      dom-to-image's options object is described at <a href="https://github.com/tsayen/dom-to-image#rendering-options">https://github.com/tsayen/dom-to-image#rendering-options</a></p>
+    <p class="pad"><code>CCC.images[filename]</code><br>&nbsp;&nbsp;
+      <code>CCC.images</code> is an object, not a function, hence the square brackets. It contains the local image files loaded using the files chooser, as dataUrls, to which <code>img</code> <code>src</code> can be set. For an example, see the demo in Cardery.<br>&nbsp;&nbsp;
+      For security, browsers don't allow resource files loaded via <code>file:///</code> to be freely manipulated in JavaScript. The restriction is supposed to be lifted if the user actively supplies the file via file chooser, but in my experience Firefox doesn't lift it. Chrome does.</p>
+    <p class="pad"><code>CCC.preview(jqobj)</code><br>&nbsp;&nbsp;
+      Use this to insert your card HTML without returning from <code>main</code>, if you need to use <code>$(…).innerHeight()</code> or for any other reason.</p>
+    <hr>
+    <p class="pad">Questions, suggestions, rants, raves? Creations to share? <a href="https://twitter.com/deCardery">Tweet me!</a></p>
+    <p class="pad">Cardery can be downloaded at <a href="https://github.com/Xomnom/Cardery/releases">https://github.com/Xomnom/Cardery/releases</a></p>
+  </body>
+</html>
 
