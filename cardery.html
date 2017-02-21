@@ -105,7 +105,7 @@ CCC.setMain(Demo.main);</textarea>
 }
 
 .cardtext img {
-  height: 1em;
+  height: 1em;      /* Same height as a line of text */
   margin-top: -1px; /* Without this, the image distorts the line-height by 1px
                        regardless of the font size. */
 }
@@ -139,6 +139,7 @@ Prince Ribbit,"A frog of unusual size, with a tiny crown perched incongruously a
       <div id="buttonsDiv">
         <button id="generateAllButton">Generate All</button>
         <button id="generateTestButton">Generate Test</button>
+        <a href="index.html" target="_blank">README</a>
         <br>
         Local image files (multi-select): <input type="file" id="imgLoader" multiple/>
         <button id="clearImagesButton">Clear Loaded Files</button>
@@ -150,7 +151,16 @@ Prince Ribbit,"A frog of unusual size, with a tiny crown perched incongruously a
         </form>
       </div>
     </div>
-    <div id="viewDiv"></div>
+    <div id="viewDiv">
+      <center>
+        <h1>Cardery</h1>
+        <p>Make cards with HTML, CSS, JS, and CSV.</p>
+        <p>by <a href="https://twitter.com/deCardery">Michael de Cardery</a>, a.k.a. "Xom"</p>
+        <p><a href="https://github.com/Xomnom/Cardery">Available on GitHub</a> under the <a href="LICENSE">MIT License</a>.</p>
+        <br>
+        <p><i>To run the demo, use the files chooser to load the images in the demo folder, then click "Generate"!</i></p>
+      </center>
+    </div>
   </body>
 </html>
 
