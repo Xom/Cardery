@@ -22,40 +22,40 @@
           <div id="jsLines" class="lineNumbers">1</div>
           <textarea id="jsText" spellcheck="false">var Demo = {};
 
-Demo.spaces = / /g;
-
-Demo.filename = function(name) {
-  return name.replace(Demo.spaces, '_') + '.png';
-};
-
 Demo.main = function(x, cdata) {
-  var card = $('<div/>');
+  var card = $(`<div>
+    <div class="cardback"/>
+    <div class="cardname">${cdata.cardname}</div>
+    <div class="cardimgdiv"/>
+    <div class="cardtext">${cdata.description} </div>
+  </div>`);
   CCC.preview(x, card);
 
-  $('<div/>', {'class': 'cardback'}).appendTo(card);
-  $('<div/>', {'class': 'cardname', text: cdata.cardname}).appendTo(card);
+  var cardImgDiv = card.find('.cardimgdiv');
+  var cardText = card.find('.cardtext');
 
   var imgSrc = CCC.images[Demo.filename(cdata.cardname)];
-  $('<div/>', {'class': 'cardimgdiv'})
-    .append($('<img/>', {'class': 'cardimg', src: imgSrc}))
-    .appendTo(card);
+  cardImgDiv.append($('<img>', {'class': 'cardimg', src: imgSrc}));
+  cardText.append($('<img>', {src: imgSrc}));
 
   var fontSize = 16;
-  var cardText = $('<div/>', {'class': 'cardtext',
-                                 text: cdata.description + ' '})
-    .css('font-size', '' + fontSize + 'px')
-    .append($('<img/>', {src: imgSrc}))
-    .appendTo(card);
+  cardText.css('font-size', `${fontSize}px`);
 
   while (cardText.innerHeight() >= 100) {
     fontSize -= 1;
     if (fontSize > 10) {
       fontSize -= 1;
     }
-    cardText.css('font-size', '' + fontSize + 'px');
+    cardText.css('font-size', `${fontSize}px`);
   }
 
   return card;
+};
+
+Demo.spaces = / /g;
+
+Demo.filename = function(name) {
+  return name.replace(Demo.spaces, '_') + '.png';
 };
 
 CCC.setRenderOptions({width: 198, height: 270});
