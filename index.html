@@ -2,63 +2,101 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Cardery – Make cards with HTML, CSS, JS, CSV</title>
+    <title>Cardery – democratizing the means of game design</title>
     <style>
-      #screenshot { float: right;
-                    width: 60%;
-                   margin: 0 0.2in;
-                   border: medium solid #00f; }
-
       .ctr { text-align: center; }
-
-      hr { margin: 0.3in; }
-
-      .pad { padding: 0 0.2in; }
-
-      .red { color: #c00; }
-
-      code { color: #060; }
-
-      #arrow { text-decoration: none;
-                     font-size: xx-large; }
+      p { padding: 0 3%; }
+      p, li { margin-bottom: 0.5625em; }
+      ul { margin-top: 0; font-size: smaller; }
+      hr { margin: 3%; }
+      code { color: #066; }
+      textarea { white-space: pre;
+        width: 45%;
+        height: 33em;
+        font-size: 10px;
+        background-color: #eee;
+        color: black; }
     </style>
   </head>
   <body>
-    <a href="cardery.html"><img id="screenshot" src="lib/cardery.png"></a>
-    <h1 class="ctr">Cardery</h1>
-    <p class="ctr">Make cards with HTML, CSS, JS, and CSV.</p>
-    <p class="ctr">by <a href="https://twitter.com/deCardery">Michael de Cardery</a>, a.k.a. "Xom"</p>
-    <p class="ctr"><a href="https://github.com/Xomnom/Cardery">GitHub repo</a> · <a href="https://github.com/Xomnom/Cardery/releases">Download</a> · <a href="https://github.com/Xomnom/Cardery/blob/master/LICENSE">License (MIT)</a></p>
-    <p class="ctr">Click screenshot to start. <a id="arrow" href="cardery.html">↗</a></p>
+    <a name="top"/>
+    <img style="width:25%;float:left;" src="demo/output/demo.7.png">
+    <img style="width:25%;float:right;" src="demo/output/demo.8.png">
+    <h1 class="ctr" style="margin-bottom:0;padding-top:0.5625em;">Cardery</h1>
+    <h6 class="ctr" style="margin-top:0.5625em;font-style:italic;">democratizing the means of game design</h6>
+    <p class="ctr">Make cards with HTML, CSS, JS, and&nbsp;CSV.</p>
+    <p class="ctr">by&nbsp;<a href="https://twitter.com/deCardery">Michael&nbsp;de&nbsp;Cardery</a>, a.k.a.&nbsp;"Xom"</p>
+    <p class="ctr"><a href="https://github.com/Xomnom/Cardery">GitHub repo</a> · <b><a href="https://github.com/Xomnom/Cardery/releases">Download</a></b> · <a href="https://github.com/Xomnom/Cardery/blob/master/LICENSE">License&nbsp;(MIT)</a></p>
+    <p class="ctr">Cardery requires Chrome&nbsp;55+ or&nbsp;Firefox&nbsp;52+.<br>
+      See <a href="#guide">guide</a> for more notes on compatibility.</p>
     <hr>
-    <p class="ctr"><b>README</b></p>
-    <p class="pad">Input card data in <a href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV format</a> (use column names in first line). Input JavaScript and CSS code to convert card data to HTML. (Use the radio buttons on the right to switch between data and code inputs.)</p>
-    <p class="pad">Use local image files to avoid loading images across a network connection. Cardery is designed to be used offline.<br>
-      <span class="red"><b>NOTE:</b> Local image files do not work in Firefox, as far as I know. I tried Firefox and Chrome, and it only works for me in Chrome. For details, see <code>CCC.images</code> further on this page.</span></p>
-    <p class="pad">"Generate Test" generates a sample of up to six cards. "Generate All" generates all cards; although still only six are previewed, the resulting "Create ZIP" button will include all of the cards. For convenience, test samples always include the last card in the CSV.</p>
-    <p class="pad">For convenience, Cardery includes the following JavaScript libraries:
-      <ul><li><a href="https://api.jquery.com/">jQuery</a>, for manipulating HTML.</li>
-      <li><a href="https://lodash.com/docs">Lodash</a>, miscellaneous utility functions.</li>
-      <li><a href="http://handlebarsjs.com/">Handlebars.js</a> and <a href="https://elving.github.io/swag/">Swag</a>, string templating. (You don't have to call <code>Swag.registerHelpers</code> because Cardery already does so.)</li></ul></p>
-    <p class="pad">Don't edit cardery.html directly. Instead, put your data and code in .csv, .js, and .css files in a folder, and mostly edit them in a text editor, such as <a href="https://notepad-plus-plus.org/">Notepad++</a>. When you do minor edits inside Cardery, don't forget to keep copying your changes out to your files. To save all the versions of your files, use <a href="https://betterexplained.com/articles/a-visual-guide-to-version-control/">version control software</a>, such as <a href="https://git-scm.com/downloads">git</a> (<a href="https://try.github.io/">tutorial</a>).</p>
-    <p class="pad">The cards generated in the demo are much lower-res than you probably want. If you don't know what you want, try 300px per inch.</p>
+    <p class="ctr"><u><b>Intro &amp; Demo</b></u> | <a href="#guide">Reference Guide</a></p>
+    <p>Cardery.js is a script that uses <a href="https://github.com/tsayen/dom-to-image">dom-to-image</a> to render PNG images from card data in <a href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV&nbsp;format</a> and card template written in <a href="https://www.w3schools.com/html/default.asp">HTML</a>, <a href="https://www.w3schools.com/css/default.asp">CSS</a>, and&nbsp;<a href="https://www.w3schools.com/js/default.asp">JavaScript</a>. Work in your favorite text editor or spreadsheet editor, while refreshing your browser for instant WYSIWYG feedback.</p>
+    <p>A complete example is shown below. <a href="demo/demo.html">Click here to run the example project.</a></p>
+    <p class="ctr"><textarea id="demoHtml" disabled="true"></textarea>
+      <textarea id="demoCsv" disabled="true" style="margin-left:2%;"></textarea></p>
+    <p style="font-size:smaller;">The above example project is public domain. Use it freely, with or without attribution, even for commercial
+      purposes<a name="guide">.</a></p>
     <hr>
-    <p class="pad">Cardery's functions are described below.</p>
-    <p class="pad"><code>CCC.setMain(main)</code><br>&nbsp;&nbsp;
-      Cardery expects you to give it a function <code>main(x, cdata)</code> that returns a jQuery object for it to render.<br>&nbsp;&nbsp;
-      <code>x</code> is the card's index; it starts at 0 for the first card, so it's always 2 less than the card's line number in the CSV.<br>&nbsp;&nbsp;
-      <code>cdata</code> is an object containing the card data, with the column names as keys. Cardery uses <a href="http://papaparse.com/docs#results">Papa Parse</a> to parse the CSV; the full Papa Parse result object is available as <code>CCC.parsed</code>.</p>
-    <p class="pad"><code>CCC.setRenderOptions(options)</code><br>&nbsp;&nbsp;
-      Cardery uses <a href="https://github.com/tsayen/dom-to-image">dom-to-image</a> to render to PNG.<br>&nbsp;&nbsp;
-      dom-to-image's options object is described at <a href="https://github.com/tsayen/dom-to-image#rendering-options">https://github.com/tsayen/dom-to-image#rendering-options</a></p>
-    <p class="pad"><code>CCC.images[filename]</code><br>&nbsp;&nbsp;
-      <code>CCC.images</code> is an object, not a function, hence the square brackets. It contains the local image files loaded using the files chooser, as dataUrls, to which <code>img</code> <code>src</code> can be set. For an example, see the demo in Cardery.<br>&nbsp;&nbsp;
-      For security, browsers don't allow resource files loaded via <code>file:///</code> to be freely manipulated in JavaScript. The restriction is supposed to be lifted if the user actively supplies the file via file chooser, but in my experience Firefox doesn't lift it. Chrome does.</p>
-    <p class="pad"><code>CCC.preview(jqobj)</code><br>&nbsp;&nbsp;
-      Use this to insert your card HTML without returning from <code>main</code>, if you need to use <code>$(…).innerHeight()</code> or for any other reason.</p>
+    <p class="ctr"><a href="#top">Intro &amp; Demo</a> | <u><b>Reference Guide</b></u></p>
+    <p>Cardery works best with Chrome for me, but it does work in Firefox as of FF52, which has been out for less than 48 hours as I write this. There are four considerations:
+      <ul><li>Cardery uses <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function">async functions</a>, which are supported as of Chrome 55 and Firefox 52.</li>
+      <li>Chrome forbids scripts from making requests to file:///. To&nbsp;use Cardery with Chrome, you must serve your files from http://localhost/. <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Set_up_a_basic_working_environment">See&nbsp;this tutorial.</a> If you're on Windows like I am, Microsoft's IIS may or may not be easier to install than Apache; <a href="iis/iis.html">here's how it went for me.</a></li>
+      <li>Like web pages, the rendered cards will look different depending on your browser, your operating system, and their settings. If you run the demo, your Shifty Elf might not look identical to mine at the top of this page, but I tried to write the demo template so that it would look reasonable in most any environment. But one thing I couldn't figure out with Firefox is <a href="https://en.wikipedia.org/wiki/Subpixel_rendering">subpixel antialiasing</a>, which looks good on-screen, but doesn't make sense on an image you want to print. In my experience, Chrome automagically stops using subpixel antialiasing when you use dom-to-image to generate images. On the other hand, I couldn't find a way to make Firefox not use it, short of disabling it at the OS&nbsp;level. After all, it is an OS feature; it's called "ClearType" in Windows. I don't know how Chrome is smart enough not to do it when I don't want it to, but that's why I said Cardery works best with Chrome for me. Your mileage may vary, especially on a different OS.</li>
+      <li><a href="https://github.com/tsayen/dom-to-image">dom-to-image</a> runs faster in Chrome than in Firefox.</li></ul></p>
+    <br>
+    <p>The chassis of a Cardery project is a HTML file that contains or links everything else, such as the above demo.html. Notice that it doesn't have a &lt;body&gt;; Cardery.js will generate the page when you load the file in your browser. The card template is written in JS and CSS, and in your script you need to invoke Cardery with the name(s) of your CSV files and with a specifically-formatted JavaScript object representing your template, which I call the "template object".</p>
+    <p>Cardery's functions and the template object are described below.</p>
+    <br>
+    <p><code><b>Cardery</b>(csvOrList, template)</code> is how you invoke Cardery, once Cardery.js has been loaded.<br><br>&nbsp;&nbsp;
+      <code>csvOrList</code> is the path to your CSV, or an array of paths. The top row of each CSV must be your column names.<br><br>&nbsp;&nbsp;
+      <code>template</code> is an object whose properties will be made available in the data objects Cardery will create to represent each card. <code>template</code>'s property names share the same namespace as your column names, so make sure the names don't conflict. Some special properties are as follows:<br>&nbsp;&nbsp;
+      <code>template.main</code> must be a function that constructs a HTML representation of the card in <code>Cardery.mainDiv</code>, which is a <a href="https://learn.jquery.com/using-jquery-core/jquery-object/">jQuery&nbsp;object</a>, and for convenience is passed as the first and only argument to <code>main</code>. In <code>main</code> and in any method it calls, the pronoun <code>this</code> will contain the card data, with the column names as keys. For example, <code>main</code> might refer to <code>this.cardname</code> if you have a column named cardname. <code>main</code> can be <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function">async</a>, and must return the jQuery object or DOM object of the root element of the card.<br>&nbsp;&nbsp;
+      <code>this.csv</code> and <code>this.i</code> will be added to the card data by Cardery, where <code>csv</code> is the path of the CSV it's from, and <code>i</code> is its index within its CSV, which starts at 0 for the first card in each CSV.<br><br>&nbsp;&nbsp;
+      <code>template.options</code> may optionally be an object specifying certain options.<br>&nbsp;&nbsp;
+      <code>template.options.scale</code> (default: 1) multiplies the dimensions of the generated image. Internally, Cardery uses <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/scale">CSS scale()</a>.<br>&nbsp;&nbsp;
+      <code>template.options.ppi</code> (default: 96) is an option I recommend using instead of <code>scale</code>. In CSS, <code>1in</code> equals <code>96px</code>. <code>ppi</code> lets you represent actual inches using CSS inches while specifying the actual pixels-per-inch you want. (Most print-on-demand services ask for 300ppi.) Internally, <code>scale</code> is multiplied by <code>ppi/96</code>.<br>&nbsp;&nbsp;
+      You can also specify <a href="https://github.com/tsayen/dom-to-image#rendering-options">options for dom-to-image</a> in <code>template.options</code>.</p>
+    <p><code><b>Cardery</b>.waitImgLoad(img)</code> waits for image(s) to load, useful if you want to measure some element's height or width.<br>&nbsp;&nbsp;
+      <code>img</code> is optionally a <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement">HTMLImageElement</a>. If <code>img</code> is not specified, <code>waitImgLoad</code> waits for all images on the page.</p>
+    <p><code><b>Cardery</b>.showError(obj)</code> displays the contents of <code>obj</code> in <span style="color:#c00">red</span> at the top of the page.</p>
+    <p><code><b>Cardery</b>.parsed[csv]</code> contains the full result object generated when Cardery calls <a href="http://papaparse.com/docs#results">Papa Parse</a>.</p>
+    <br>
+    <p>When you load your HTML file in your browser, a sample of up to six card images will be previewed. "Save all" generates all images in order to save them in a ZIP; "Save these N" saves the previewed images without waiting to generate more. "Toggle zoom" attempts to resize the preview images to their natural pixel resolution; you should verify whether it works in your browser.</p>
+    <p>Cardery uses <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">localStorage</a> to try to keep track of which cards were recently edited in your CSV(s) in order to preview those first. "Search" lets you preview a different sample; you can enclose your search string in slashes to have it interpreted as a <a href="http://www.regular-expressions.info/quickstart.html">regular</a> <a href="https://regexper.com/">expression</a>. To reprioritize a card on next refresh as though you had edited it, prefix a search with "\pin ".</p>
+    <br>
+    <p>If you don't have a favorite text editor, try <a href="https://notepad-plus-plus.org/">Notepad++</a>.
+    <br>To save all the versions of your files, use <a href="https://betterexplained.com/articles/a-visual-guide-to-version-control/">version control software</a>, such as <a href="https://git-scm.com/downloads">git</a> (<a href="https://try.github.io/">tutorial</a>).</p>
     <hr>
-    <p class="pad">Questions, suggestions, rants, raves? Creations to share? <a href="https://twitter.com/deCardery">Tweet me!</a></p>
-    <p class="pad">Cardery can be downloaded at <a href="https://github.com/Xomnom/Cardery/releases">https://github.com/Xomnom/Cardery/releases</a></p>
+    <p>Questions, suggestions, rants, raves? Creations to share? <a href="https://twitter.com/deCardery">Tweet me!</a></p>
+    <p>Cardery can be downloaded at <a href="https://github.com/Xomnom/Cardery/releases">https://github.com/Xomnom/Cardery/releases</a></p>
+
+    <script>
+      (function(){
+        var xhrHtml = new XMLHttpRequest();
+        xhrHtml.open('GET', 'demo/demo.html', true);
+        xhrHtml.onload = function () {
+          document.getElementById('demoHtml').value = xhrHtml.status === 200 ?
+            xhrHtml.responseText :
+            'demo/demo.html failed to load; error code: ' + xhrHtml.statusText;
+        };
+        xhrHtml.onerror = function () {
+          document.getElementById('demoHtml').value = 'demo/demo.html failed to load; there was a network error.\n\nIf you are using Chrome and trying to read from file:///,\nthen please refer to the guide for notes on compatibility.';
+        };
+        xhrHtml.send();
+
+        var xhrCsv = new XMLHttpRequest();
+        xhrCsv.open('GET', 'demo/demo.csv', true);
+        xhrCsv.onload = function () {
+          document.getElementById('demoCsv').value = xhrCsv.status === 200 ?
+            xhrCsv.responseText :
+            'demo/demo.csv failed to load; error code: ' + xhrCsv.statusText;
+        };
+        xhrCsv.onerror = function () {
+          document.getElementById('demoCsv').value = 'demo/demo.csv failed to load; there was a network error.\n\nIf you are using Chrome and trying to read from file:///,\nthen please refer to the guide for notes on compatibility.';
+        };
+        xhrCsv.send();
+      }());
+    </script>
   </body>
 </html>
-
