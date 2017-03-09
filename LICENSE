@@ -23,3 +23,25 @@ SOFTWARE.
 
   [1]: https://github.com/Xomnom/Cardery
 
+--
+
+Cardery requires and is packaged with the following libraries:
+ * jQuery       (Apache License Version 2.0)
+ * PapaParse    (MIT License)
+ * dom-to-image (MIT License)
+ * JSZip        (MIT License)
+ * FileSaver.js (MIT License)
+
+--
+
+Furthermore, Cardery's associated documentation, including the example code,
+data, and image files[2] packaged with it, are released in the public domain.
+All copyright and related or neighboring rights are waived to the extent
+possible under law in the United States and worldwide.
+
+You can modify and distribute the examples, even for commercial purposes,
+without asking permission.
+
+  [2]: Public domain image files of illustrations by Paolo Mercuri (1804-1884)
+       courtesy http://www.oldbookart.com/2012/01/15/middle-ages-medieval-dress/
+

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>Cardery demo</title>
+
+<!-- Cardery and its dependencies -->
+<script defer type="text/javascript" src="../lib/jquery-3.1.1.slim.min.js"></script>
+<script defer type="text/javascript" src="../lib/papaparse.min.js"></script>
+<script defer type="text/javascript" src="../lib/dom-to-image.js"></script>
+<script defer type="text/javascript" src="../lib/jszip.min.js"></script>
+<script defer type="text/javascript" src="../lib/FileSaver.js"></script>
+<script defer type="text/javascript" src="../lib/Cardery.js"></script>
+<style>/*Default line-height and (lack of) margin*/body{line-height: 1.15; margin: 0;}
+/*Don't let subscript, superscript affect line height*/sub{bottom: -0.25em;} sup{top: -0.5em;}
+sub,sup{font-size: 75%; line-height: 0; position: relative; vertical-align: baseline;}</style>
+
+<!-- Your stuff goes here -->
+<script type="text/javascript">
+// Inline scripts load first, so we gotta wait for everything else...
+(f=>{let ms=1;(function wait(){setTimeout(window.Cardery===undefined?wait:f,ms);ms+=ms;}());})(()=>{
+  Cardery('demo.csv', {
+    options: {ppi: 300}, // Most print-on-demand services expect 300 pixels-per-inch.
+
+    async main (mainDiv) {
+      let card = $(`<div class="card">
+        <div class="cardback"/>
+        <div class="cardrank">${this.rank}</div>
+        <div class="cardname">${this.cardname}</div>
+        <div class="cardimg"><img src="oldbookart_com/${this.imgsrc}"></div>
+        <div class="cardtext">
+          <div><img src="oldbookart_com/${this.imgsrc}">
+          ${this.rules.replace(/CARDNAME/g, this.cardname)}</div>
+          ${this.flavor && `<div class="cardflavor">${this.flavor}</div>`}
+        </div>
+      </div>`).appendTo(mainDiv); //element must be in DOM to be rendered
+
+      let cardText = card.find('.cardtext');
+      await Cardery.waitImgLoad();
+      for (let em = 0.875; em > 0.5; em *= 0.9375) {
+        cardText.css('font-size', `${em}em`);
+        if (cardText[0].scrollHeight <= cardText[0].offsetHeight) break;
+      }
+
+      return card;
+    },
+  });
+});
+</script>
+<style>
+.card {
+  position: relative;
+  width: 2.75in;
+  height: 3.75in;
+  overflow: hidden;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 0.16in; /* inherited by cardname as-is,
+    and by cardtext as the base for relative sizing */
+}
+
+.cardback {
+  position: absolute;
+  bottom: 0.125in;
+  left: 0.125in;
+  right: 0.125in;
+  top: 0.125in;
+  border-radius: 0.125in;
+  background-color: #f4ecd8;
+}
+
+.cardrank {
+  position: absolute;
+  left: 0.3in;
+  top: 0.3in;
+  width: 0.4in;
+  height: 0.39in;
+  padding-top: 0.01in;
+  overflow: hidden;
+  border: solid 1px black;
+  background-color: white;
+  font-size: 0.3in;
+}
+
+.cardname {
+  position: absolute;
+  top: 0.3in;
+  left: 0.7in;
+  right: 0.25in;
+}
+
+.cardimg {
+  position: absolute;
+  left: 0.3in;
+  right: 0.3in;
+  top: 0.5in;
+  height: 1.8in;
+}
+
+.cardimg img {
+  height: 100%;
+}
+
+.cardtext {
+  position: absolute;
+  bottom: 0.3in;
+  left: 0.3in;
+  right: 0.3in;
+  top: 2.38in;
+  overflow: hidden;
+  text-align: left;
+}
+
+.cardflavor {
+  margin-top: 0.5625em;
+  font-size: 0.9375em;
+  font-style: italic;
+}
+
+.cardtext img {
+  height: 1em; /* Same height as a line of text */
+  margin-bottom: -0.3em;
+  margin-top: -0.3em;
+  vertical-align: middle;
+}
+</style>
+</head>
