@@ -23,6 +23,8 @@ sub,sup{font-size: 75%; line-height: 0; position: relative; vertical-align: base
 
     async main (mainDiv) {
       let card = $(`<div class="card">
+        <!-- Card shape with rounded corners looks good on-screen.
+          For print, instead put https://en.wikipedia.org/wiki/Bleed_(printing) -->
         <div class="cardback"/>
         <div class="cardrank">${this.rank}</div>
         <div class="cardname">${this.cardname}</div>
