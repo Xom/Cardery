@@ -19,7 +19,7 @@ sub,sup{font-size: 75%; line-height: 0; position: relative; vertical-align: base
 // Inline scripts load first, so we gotta wait for everything else...
 (f=>{let ms=1;(function wait(){setTimeout(window.Cardery===undefined?wait:f,ms);ms+=ms;}());})(()=>{
   Cardery('demo.csv', {
-    options: {ppi: 300}, // Most print-on-demand services expect 300 pixels-per-inch.
+    //options: {ppi: 300}, // Most print-on-demand services expect 300 pixels-per-inch.
 
     async main (mainDiv) {
       let card = $(`<div class="card">
@@ -51,51 +51,51 @@ sub,sup{font-size: 75%; line-height: 0; position: relative; vertical-align: base
 <style>
 .card {
   position: relative;
-  width: 2.75in;
-  height: 3.75in;
+  width: 825px;
+  height: 1125px;
   overflow: hidden;
   text-align: center;
   font-family: sans-serif;
-  font-size: 0.16in; /* inherited by cardname as-is,
+  font-size: 48px; /* inherited by cardname as-is,
     and by cardtext as the base for relative sizing */
 }
 
 .cardback {
   position: absolute;
-  bottom: 0.125in;
-  left: 0.125in;
-  right: 0.125in;
-  top: 0.125in;
-  border-radius: 0.125in;
+  bottom: 37.5px;
+  left: 37.5px;
+  right: 37.5px;
+  top: 37.5px;
+  border-radius: 37.5px;
   background-color: #f4ecd8;
 }
 
 .cardrank {
   position: absolute;
-  left: 0.3in;
-  top: 0.3in;
-  width: 0.4in;
-  height: 0.39in;
-  padding-top: 0.01in;
+  left: 90px;
+  top: 90px;
+  width: 120px;
+  height: 117px;
+  padding-top: 3px;
   overflow: hidden;
   border: solid 1px black;
   background-color: white;
-  font-size: 0.3in;
+  font-size: 90px;
 }
 
 .cardname {
   position: absolute;
-  top: 0.3in;
-  left: 0.7in;
-  right: 0.25in;
+  top: 90px;
+  left: 210px;
+  right: 75px;
 }
 
 .cardimg {
   position: absolute;
-  left: 0.3in;
-  right: 0.3in;
-  top: 0.5in;
-  height: 1.8in;
+  left: 90px;
+  right: 90px;
+  top: 150px;
+  height: 540px;
 }
 
 .cardimg img {
@@ -104,10 +104,10 @@ sub,sup{font-size: 75%; line-height: 0; position: relative; vertical-align: base
 
 .cardtext {
   position: absolute;
-  bottom: 0.3in;
-  left: 0.3in;
-  right: 0.3in;
-  top: 2.38in;
+  bottom: 90px;
+  left: 90px;
+  right: 90px;
+  top: 714px;
   overflow: hidden;
   text-align: left;
 }
