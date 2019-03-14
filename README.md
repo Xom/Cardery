@@ -7,3 +7,4 @@ On the web at https://cardery.xomnom.com/
 
 Known problem: Card previewer freaks out when two or more cards are identical
 
+XOMNOM is my personal brand. If you fork Cardery, I welcome you to call it Cardery, but not XOMNOM.
