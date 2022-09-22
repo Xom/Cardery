@@ -1,0 +1,27 @@
+Miscellaneous notes on Cardery and alternatives:
+
+How Cardery works is amusing, but surely there is a better way in the year of our lord 2019. If someone has not made something better already, I'm sure it will happen soon, so I don't intend to do it myself. The non-obvious valuable things to make would be (a) a script that takes in card images and collates them into whatever format various printing services want; and/or (b) a how-to-guide for dealing with various printing services. I have no time to make those either.
+
+An unfortunate fact about the Cardery approach is that "like web pages, the rendered cards will look different depending on your browser, your operating system, and their settings. If you run the demo, your Shifty Elf might not look identical to mine at the top of this page, but I tried to write the demo template so that it would look reasonable in most any environment. But one thing I couldn't figure out with Firefox is subpixel antialiasing, which looks good on-screen, but doesn't make sense on an image you want to print. In my experience, Chrome automagically stops using subpixel antialiasing when you use dom-to-image to generate images. On the other hand, I couldn't find a way to make Firefox not use it, short of disabling it at the OS level. After all, it is an OS feature; it's called "ClearType" in Windows. I don't know how Chrome is smart enough not to do it when I don't want it to, but that's why I said Cardery works best with Chrome for me. Your mileage may vary, especially on a different OS." If you really wanted to use Cardery seriously, you'd standardize on a certain OS and browser, like Chrome 62 on Debian whatever on a VM or VPS.
+
+Cardery should've been an Atom plugin, so you can have a preview pane with hot reload. But at the time, either Atom or Electron was built on a too-old version of Chrome that didn't have something I needed. It's probably still possible to jump through some hoops and setup hot reload in your browser, although it might be painful if you have only one monitor. Cardery's previewer uses localstorage to prioritize previewing recently changed cards, and you can pin a card if it's the template not the carddata that's changing.
+
+The following chatlog mentions some alternatives to Cardery:
+
+<keithburgun> Anyone know of any good resources on like "best practices" for designing cards on a computer?
+<keithburgun> I use photoshop and do some pretty dumb stuff
+<keithburgun> I bet there has been some pretty smart pipeline improvement stuff
+<keithburgun> like indesign or something probably can do smart things
+<keithburgun> I just know the way I'm doing stuff can't be right. Cuz like each card is too much its own unique asset
+
+<Brett Lowey> the main one i know is nanDECK but it's pretty programmery
+<Brett Lowey> InDesign is what Cole Wehrle (Pax Pamir guy) uses
+
+<Xom> I think Cardery (my HTML/CSS tool that supports additional logic in JS) is still a reasonable choice in 2022, though I am a little bit surprised that there isn't something significantly better by now.
+<Xom> https://cardcreatr.sffc.xyz/ is kind of similar in concept, except it uses SVG instead of HTML/CSS, which I think is a mistake only because the latter is already more familiar to people
+<Xom> maybe it has more features? I have no idea
+<Xom> in some ways this guy is responsible for the existence of Cardery because it was when I overheard and butted into a conversation he was having at a game shop about making Card Creatr that I acquired this opinion that HTML/CSS is more appropriate, which spurred me to make Cardery
+
+<Mundungu> I use component studio, but its $10/month
+<Mundungu> it works really well for cards
+<ahw> I also use component studio, it’s worth the cost, especially if you order prototypes thru TGC or export often to tabletop simulator
